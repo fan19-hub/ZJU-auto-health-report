@@ -2,7 +2,7 @@
 ### 介绍：
 1.  修改了“浙江大学自动打卡计划”的代码，考虑了报错，使其鲁棒性更高，并添加了注释。欢迎大家提出issue或者上传修改代码  
 2.  源项目地址：https://github.com/Tishacy/ZJU-nCov-Hitcarder 
-3. 本项目所有函数功能已经写明，无发送信息等泄露用户的隐私的代码，请放心使用。
+3. 本项目所有函数功能已经写明，无发送信息等泄露用户的隐私的代码，请放心使用 
 **本代码仅供web学习参考，请大家认真对待健康打卡，疫情无小事！！！！！！** 
 
 ### 安装指南（根据源项目文档修改）：
@@ -22,7 +22,7 @@ python D:\projects\Python\AutoHit.py
 
 
 
-**P.S.** chromedriver的安装：
+### P.S. chromedriver的安装：
   - 在Chrome设置->关于Chrome查到所使用的Chrome版本号
   - 在[这里](http://npm.taobao.org/mirrors/chromedriver/)下载对应版本的chromedriver
   - 将解压后的chromedriver.exe所在目录放到python的scripts目录里（这样就不用再单独添加环境变量了）我的路径是：C:\Users\fan.19\AppData\Local\Programs\Python\Python38\Scripts
