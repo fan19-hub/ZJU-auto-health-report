@@ -23,8 +23,8 @@ cd C:\Users\fan.19\fan19-hub\ZJU-auto-punch
 python AutoHit.py
 ::run it
 ```
-要打开它，把里面那个C:\Users\fan.19\fan19-hub\ZJU-auto-punch路径**改成自己的AutoHit.py所在目录路径**
-然后把autostart.bat文件放到**C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp**目录下（在有的电脑上可能会有中文路径）
+要打开它，把里面那个C:\Users\fan.19\fan19-hub\ZJU-auto-punch路径**改成自己的AutoHit.py所在目录路径** 
+然后把autostart.bat文件放到**C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp**目录下（在有的电脑上可能会有中文路径） 
 这个**StartUp**目录也就是开机启动目录哈哈哈，这样每次开机就会运行啦
 
 
