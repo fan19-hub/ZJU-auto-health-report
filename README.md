@@ -2,7 +2,8 @@
 ### 介绍：
 1.  修改了“浙江大学自动打卡计划”的代码，考虑了报错，使其鲁棒性更高，并添加了注释。欢迎大家提出issue或者上传修改代码  
 2.  源项目地址：https://github.com/Tishacy/ZJU-nCov-Hitcarder 
-3. 本项目所有函数功能已经写明，无发送信息等泄露用户的隐私的代码，请放心使用 
+3. 本项目所有函数功能已经写明，无发送信息等泄露用户的隐私的代码，请放心使用
+
 **本代码仅供web学习参考，请大家认真对待健康打卡，疫情无小事！！！！！！** 
 
 ### 安装指南（根据源项目文档修改）：
@@ -13,11 +14,17 @@
 5. 要先手动打一次卡，并运行一次AutoHit.py，输入你的信息，并确保不报错
 6. 里面有一个名为autostart.bat的批处理文件：
 ```bat
-ping localhost -n 4
-python D:\projects\Python\AutoHit.py
+netsh wlan connect name=ZJUWLAN
+::line 1 meant to connect the WIFI ZJUWLAN
+
+cd C:\Users\fan.19\fan19-hub\ZJU-auto-punch
+::line 2 meant to enter the directory where AutoHit.py is
+
+python AutoHit.py
+::run it
 ```
-要打开它，把里面那个路径**改成自己的AutoHit.py的路径**
-然后把它放到**C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp**目录下（在有的电脑上可能会有中文路径）
+要打开它，把里面那个C:\Users\fan.19\fan19-hub\ZJU-auto-punch路径**改成自己的AutoHit.py所在目录路径**
+然后把autostart.bat文件放到**C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp**目录下（在有的电脑上可能会有中文路径）
 这个**StartUp**目录也就是开机启动目录哈哈哈，这样每次开机就会运行啦
 
 
