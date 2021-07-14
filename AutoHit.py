@@ -9,10 +9,24 @@ Date:7/14/2021
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import json
+import os
+from time import sleep
 
 SUCCESS=1
 FAILURE=0
 
+def check_network():
+      for c in range(12):
+            exit_code = os.system('ping www.baidu.com')
+            if exit_code:
+                  if(c==1):
+                        print("\n\n没有网唉，快去联网！不用关闭窗口，等你一分钟\n\n")
+                  sleep(5)
+                  continue
+            else:
+                  print("\n\n网络正常")
+                  return
+      raise Exception('\n\n等主人联网等了一分钟啦，没网我先撤了拜拜~')
 def get_your_info():
       """ 获取用户的用户名和密码（读取json文件。如果json文件中没有，就请求用户输入并存入json） """
       
@@ -53,6 +67,7 @@ def openPage(url):
             browser.get(url)
       except:
             print("获取网页失败，请检查网络连接（可以尝试手动打开网页）")
+            browser.close()
             return None
       return browser
 
@@ -128,6 +143,7 @@ def submit(browser)->bool:
 
 
 if __name__ == "__main__":
+      check_network()
       username=""
       password=""
       get_your_info()
