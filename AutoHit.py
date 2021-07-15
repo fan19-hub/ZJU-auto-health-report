@@ -151,7 +151,11 @@ if __name__ == "__main__":
       bs=openPage("https://healthreport.zju.edu.cn/ncov/wap/default/index")
 
       if bs!=None and SUCCESS==login(bs, username, password): #login
-                  submit(bs) #submit the page
+                  res=submit(bs) #submit the page
                   bs.close() #close it
-      
-      input("按任意键退出即可") #pause
+      if res==FAILURE:
+            input("\n\n...按任意键重试，或者关闭窗口退出")
+            os.system("python AutoHit.py")
+
+      else:
+            input("按任意键退出即可") #pause
