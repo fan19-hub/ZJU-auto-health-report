@@ -32,5 +32,5 @@ python AutoHit.py
 ### P.S. chromedriver的安装：
   - 在Chrome设置->关于Chrome查到所使用的Chrome版本号
   - 在[这里](http://npm.taobao.org/mirrors/chromedriver/)下载对应版本的chromedriver
-  - 将解压后的chromedriver.exe所在目录放到python的scripts目录里（这样就不用再单独添加环境变量了）我的路径是：C:\Users\fan.19\AppData\Local\Programs\Python\Python38\Scripts
+  - 将解压后的chromedriver.exe所在目录放到本目录下即可（和AutoHit.py一起）
   - 在命令行里输入chromedriver看看是否正确安装
