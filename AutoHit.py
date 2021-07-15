@@ -16,6 +16,7 @@ SUCCESS=1
 FAILURE=0
 
 def check_network():
+      print("\n\n正在检查网络连接：")
       for c in range(12):
             exit_code = os.system('ping www.baidu.com')
             if exit_code:
@@ -24,7 +25,7 @@ def check_network():
                   sleep(5)
                   continue
             else:
-                  print("\n\n网络正常")
+                  print("\n\n检查结果：网络正常\n\n")
                   return
       raise Exception('\n\n等主人联网等了一分钟啦，没网我先撤了拜拜~')
 def get_your_info():
@@ -35,7 +36,8 @@ def get_your_info():
 
       with open('userdata.json', 'r') as f:
             content = f.read()
-      if content=='':       #如果json文件是空的，也就是说你是首次运行
+      if content=='':       
+            #如果json文件是空的，也就是说你是首次运行
             #请求用户输入：
             username=input("请输入你的学号：")
             password=input("请输入你的密码：")
@@ -61,13 +63,16 @@ def openPage(url):
       opt = Options()
       opt.add_argument('--headless')
       opt.add_argument('--disable-gpu')
-      driver_path=r".\chromedriver.exe"
-      browser = webdriver.Chrome(executable_path=driver_path, chrome_options = opt)
+      try:
+            driver_path=r".\chromedriver.exe"
+            browser = webdriver.Chrome(executable_path=driver_path, chrome_options = opt)
+      except:
+            print("chromedriver出错，请检查：1、chromedriver是否与AutoHit.py在同一文件夹下 2、chromedriver版本是否与chrome浏览器版本对应")
     
       try:
             browser.get(url)
       except:
-            print("获取网页失败，请检查网络连接（可以尝试手动打开网页）")
+            print("获取网页失败，可手动打开网页验证网络连接，并自行排除网络故障。提示：若使用过vpn，请在windows代理服务器设置里关闭代理即可）")
             browser.close()
             return None
       return browser
@@ -106,7 +111,7 @@ def submit(browser)->bool:
             addrs = browser.find_element_by_xpath("//div[@name='area']/input")
             addrs.click()
             error =browser.find_element_by_xpath("//div[@class='wapat-inner']/div[@class='wapat-title']")
-            print(error.text,"，请开启网站的位置权限再重试，打卡失败")
+            print(error.text,"，请开启位置权限再重试，打卡失败")
             return FAILURE
       
       except:
@@ -158,5 +163,3 @@ if __name__ == "__main__":
             input("\n\n...按任意键重试，或者关闭窗口退出")
             os.system("python AutoHit.py")
 
-      else:
-            input("按任意键退出即可") #pause
