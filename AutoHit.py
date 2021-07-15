@@ -61,8 +61,9 @@ def openPage(url):
       opt = Options()
       opt.add_argument('--headless')
       opt.add_argument('--disable-gpu')
-      
-      browser = webdriver.Chrome(chrome_options = opt)
+      driver_path=r".\chromedriver.exe"
+      browser = webdriver.Chrome(executable_path=driver_path, chrome_options = opt)
+    
       try:
             browser.get(url)
       except:
