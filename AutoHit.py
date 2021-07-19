@@ -155,7 +155,7 @@ if __name__ == "__main__":
       get_your_info()
       
       bs=openPage("https://healthreport.zju.edu.cn/ncov/wap/default/index")
-
+      res=FAILURE
       if bs!=None and SUCCESS==login(bs, username, password): #login
                   res=submit(bs) #submit the page
                   bs.close() #close it
