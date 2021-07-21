@@ -5,8 +5,9 @@ from urllib.request import URLopener, urlopen
 from urllib.request import urlretrieve
 import zipfile
 from bs4 import BeautifulSoup
+
 def get_your_info()->None:
-      '''获取用户的用户名和密码（读取json文件。如果json文件中没有，就请求用户输入并存入json）''' 
+      '''获取用户的用户名和密码并存入userdata.json''' 
       global username
       global password
 
@@ -27,12 +28,15 @@ def get_your_info()->None:
                   b=dumps(info_dict)
                   f.write(b)
             print('用户信息录入userdata.json成功！')
+            
 def create_bat()->None:
+      '''创建批处理文件autostart.bat'''
       path=os.getcwd()
       txt='''
 netsh wlan connect name=ZJUWLAN
 timeout 5
-start %s\\AutoHit.exe
+cd %s
+python AutoHit.py
 pause'''%path
 
       with open("autostart.bat",'w')as f:
