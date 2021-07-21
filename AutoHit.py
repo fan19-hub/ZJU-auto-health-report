@@ -14,6 +14,8 @@ from time import sleep
 
 SUCCESS=1
 FAILURE=0
+username=""
+password=""
 
 def check_network():
       print("\n\n正在检查网络连接：")
@@ -30,7 +32,6 @@ def check_network():
       raise Exception('\n\n等主人联网等了一分钟啦，没网我先撤了拜拜~')
 def get_your_info():
       """ 获取用户的用户名和密码（读取json文件。如果json文件中没有，就请求用户输入并存入json） """
-      
       global username
       global password
 
@@ -67,7 +68,7 @@ def openPage(url):
             driver_path=r".\chromedriver.exe"
             browser = webdriver.Chrome(executable_path=driver_path, chrome_options = opt)
       except:
-            print("chromedriver出错，请检查：1、chromedriver是否与AutoHit.py在同一文件夹下 2、chromedriver版本是否与chrome浏览器版本对应")
+            print("chromedriver出错，请检查：1、chromedriver是否与AutoHit.py在同一文件夹下 2、chromedriver版本是否与chrome浏览器版本匹配")
     
       try:
             browser.get(url)
@@ -150,16 +151,21 @@ def submit(browser)->bool:
 
 if __name__ == "__main__":
       check_network()
-      username=""
-      password=""
       get_your_info()
       
       bs=openPage("https://healthreport.zju.edu.cn/ncov/wap/default/index")
       res=FAILURE
-      if bs!=None and SUCCESS==login(bs, username, password): #login
-                  res=submit(bs) #submit the page
-                  bs.close() #close it
+      if bs!=None and SUCCESS==login(bs, username, password): #if opening page and loging in successfully
+            res=submit(bs) #submit the page
+            bs.close() #close it
       if res==FAILURE:
-            input("\n\n...按任意键重试，或者关闭窗口退出")
-            os.system("python AutoHit.py")
-
+            print("\n\n手动打卡网址：https://healthreport.zju.edu.cn/ncov/wap/default/index")
+            print("您可以：\n\t按回车键重试打卡\n\t或关闭窗口退出\n\t或输入C更改学号和密码，并自动重试")
+            command=input(":")
+            if "C" in command or "c" in command:
+                  open("userdata.json", 'w').close()
+                  get_your_info()
+            try:
+                  os.system("start "+os.getcwd()+"\\AutoHit.exe")
+            except:
+                  os.system("python AutoHit.py")
