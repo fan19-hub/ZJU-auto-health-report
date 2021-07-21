@@ -7,7 +7,7 @@
 **本代码仅供web学习参考，请大家认真对待健康打卡，疫情无小事！！！！！！** 
 
 
-### 安装指南（exe版已经发布在release里，无需下面的安装步骤）：
+### 安装指南（exe版已发布，https://github.com/fan19-hub/zju-auto-punch/files/6855605/exe.zip ）：
 1. 需**正确安装python**，Chrome浏览器(若使用其他浏览器需下载对应的驱动并在代码里做相应改动)
 2. 安装selenium,urllib,bs4,json库。可以直接在命令行中输入`pip install 库名`
 3. 将整个项目下载到本地
