@@ -7,7 +7,7 @@
 **本代码仅供web学习参考，请大家认真对待健康打卡，疫情无小事！！！！！！** 
 
 
-### 安装指南（exe版已发布，https://github.com/fan19-hub/zju-auto-punch/files/6855605/exe.zip ）：
+### 安装指南（exe版已发布，https://github.com/fan19-hub/zju-auto-punch/files/6856843/exe.zip ）：
 1. 确保你**正确安装python**，Chrome浏览器(若使用其他浏览器需下载对应的驱动并在代码里做相应改动)
 2. 将整个项目下载到本地
 3. 点击setup.bat进行安装**如果chromedriver下载失败，你可以参考最下面教程手动下载**
