@@ -4,27 +4,32 @@
 2.  源项目地址：https://github.com/Tishacy/ZJU-nCov-Hitcarder 
 3. 本项目所有函数功能已经写明，无发送信息等泄露用户的隐私的代码，请放心使用 
 
-**本代码仅供web学习参考，请大家认真对待健康打卡，疫情无小事！！！！！！** 
+*本代码仅供web学习参考，请大家认真对待健康打卡，疫情无小事！！！！！！*
 
 
 ### 安装指南1（python源代码版）
 1. 确保python，Chrome已经安装好
 2. 下载本项目
-3. 点击setup.bat进行安装**提示：如果chromedriver下载失败，你可以参考最下面教程手动下载**
+3. 点击setup.bat进行安装。 *提示：如果chromedriver下载失败，你可以参考下面P.S.手动下载*
 4. 之后想要一键打卡：点击autostart.bat（或者自己运行AutoHit这个python文件）
-5. 实现每次开机时自动打卡：需要把autostart.bat这个文件，放到**C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp**目录下（在有的电脑上可能会有中文路径） 
-- 这个**StartUp**目录也就是开机启动目录哈哈哈，这样每次开机就会运行啦！
+5. 实现每次开机时自动打卡：把autostart.bat这个文件，放到**C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp**目录下 
+- 这个StartUp目录也就是开机启动目录哈哈哈，这样每次开机就会运行啦！
+
 
 ### 安装指南2（exe版，无需python及依赖库）：
-1.确保chrome已经安装
-2.https://github.com/fan19-hub/zju-auto-punch/files/6856843/exe.zip 解压到本地
-3. 点击setup进行安装**提示：如果chromedriver下载失败，你可以参考最下面教程手动下载**
-4. 创建AutoHit的快捷方式，放到**C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp**目录下
+1.  确保chrome已经安装 
+2.  下载[download.zip](https://github.com/fan19-hub/zju-auto-punch/files/6856843/exe.zip)，并解压到本地 
+3.  点击setup进行安装*。 提示：如果chromedriver下载失败，你可以参考最下面P.S.手动下载* 
+4.  创建AutoHit的快捷方式，放到**C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp**目录下 
+
+
 
 ### P.S. chromedriver的安装：
-  - 在Chrome设置->关于Chrome查到所使用的Chrome版本号
+  - 在 Chrome设置->关于Chrome 中查到所使用的Chrome版本号
   - 在[这里](http://npm.taobao.org/mirrors/chromedriver/)下载对应版本的chromedriver
-  - 将解压后的chromedriver.exe放到本目录下即可（和AutoHit.py一起）
+  - 将解压后的chromedriver.exe放到本目录下即可
+
+
 
 ### 源代码版各个文件功能说明：
 - setup.bat是一个批处理文件，它首先读取requirements.txt里面提到的python库，并进行安装，然后运行setup.py
