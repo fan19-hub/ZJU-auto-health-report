@@ -1,7 +1,3 @@
-""""
-@Author:fan19-hub
-Date:7/21/2021
-"""
 import os
 from json import dumps
 import re
@@ -11,44 +7,51 @@ import zipfile
 from bs4 import BeautifulSoup
 def get_your_info()->None:
       '''获取用户的用户名和密码（读取json文件。如果json文件中没有，就请求用户输入并存入json）''' 
-      global username
-      global password
 
-      with open('userdata.json', 'w') as f:
-            #请求用户输入：
-            ans='n'
-            while('n' in ans or 'N' in ans):
-                  username=input("请输入你的学号：")
-                  password=input("请输入你的密码：")
-                  ans=input("您的学号和密码是正确的吗？：是(y)否(n)")
-            #创建一个用户信息的字典info_dict
-            info_dict={}
-            info_dict["uname"]=username
-            info_dict["pwd"]=password
+      ans='n'
+      while('n' in ans or 'N' in ans or "否" in ans):
+                  #请求用户输入：
+            username=input("请输入你的学号：")
+            password=input("请输入你的密码：")
+            print("请输入默认打卡地址：")
+            sheng=input("省（例如浙江省）：").strip()
+            shi=input("市（例如杭州市）：").strip()
+            xian=input("县区（例如西湖区）：").strip()
+            area_default=sheng+" "+shi+" "+xian
+            ans=input("您输入的信息是正确的吗？选n以修改：是(y)否(n)")
+     
+      #创建一个用户信息的字典info_dict
+      info_dict={}
+      info_dict["uname"]=username
+      info_dict["pwd"]=password
+      info_dict["area"]=area_default
 
-            #将信息存储到json中，之后自动调用
-            with open('userdata.json', 'w') as f:
-                  b=dumps(info_dict)
-                  f.write(b)
-            print('用户信息录入userdata.json成功！')
-def create_bat()->None:
-      path=os.getcwd()
-      txt='''
-netsh wlan connect name=ZJUWLAN
-timeout 5
-cd %s
-python AutoHit.py
-pause'''%path
+      #将信息存储到json中，之后自动调用
+      with open('userdata.json', 'w',encoding='utf-8') as f:
+            b=dumps(info_dict)
+            f.write(b)
+      print('用户信息录入userdata.json成功！')
 
-      with open("autostart.bat",'w')as f:
-            f.write(txt)
-      print("autostart.bat文件创建成功！")
+
+# def create_bat()->None:
+#       path=os.getcwd()
+#       txt='''
+# netsh wlan connect name=ZJUWLAN
+# timeout 5
+# start %s\\AutoHit.exe
+# pause'''%path
+
+#       with open("autostart.bat",'w')as f:
+#             f.write(txt)
+#       print("autostart.bat文件创建成功！")
+
+
 
 def get_chromedriver_version():
       try:
             chrome_path=(os.popen("where chrome")).read()
             version_pattern=re.compile(r"(\d{2}[.]\d[.]\d{4}[.]\d{2,3}|2[.]\d{1,2})")
-            for dirpath,dirnames,files in os.walk(os.path.dirname(chrome_path)):
+            for _,dirnames,_ in os.walk(os.path.dirname(chrome_path)):
                   for dir in dirnames:
                         if re.match(version_pattern,dir)!=None:
                               return dir
@@ -112,14 +115,14 @@ def Schedule(a,b,c):
    print('%.2f%%' % per)
 
 if __name__=="__main__":
+      # create_bat()
       get_your_info()
-      create_bat()
       get_chromedriver()
-      print("\n下一步：请手动将autostart.bat文件放在C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp下")
+      print("\n下一步：请创建AutoHit.exe的快捷方式，并放在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp下")
       print("说明：StartUp目录是开机启动目录，此操作可以使您的电脑在开机时自动打卡")
+      with open("你还需要手动做的事情.txt",'w',encoding='utf-8')as f:
+            f.write(r"创建AutoHit.exe的快捷方式，并放在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp下")
       if('n' in input("\n请确认是否已经放在了正确的目录下：是(y)我不会(n)")):
             print("请找别人帮忙")
-            with open("你还需要手动做的事情.txt",'w',encoding='utf-8')as f:
-                  f.write(r"请手动将autostart.bat文件放在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp下")
+            
       input("\n...按任意键退出安装程序")
-      
