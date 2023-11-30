@@ -343,7 +343,7 @@ def get_chromedriver()->bool:
       "自动下载合适版本的chromedriver"
       try:
             chrome_path=(os.popen("where chrome")).read()
-            version_pattern=compile(r"(\d{2}[.]\d[.]\d{4}[.]\d{2,3}|2[.]\d{1,2})")
+            version_pattern=compile(r"(\d{2,3}[.]\d[.]\d{4}[.]\d{2,3}|2[.]\d{1,2})")
             for _,dirnames,_ in os.walk(os.path.dirname(chrome_path)):
                   for dir in dirnames:
                         if match(version_pattern,dir)!=None:
